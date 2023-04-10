@@ -89,3 +89,11 @@ class Item:
         :return: Число в нужном нам формате
         """
         return int(number.split(".")[0])
+
+    def __str__(self) -> str:
+        """Дандер для вывода информации об экземпляре"""
+        return f"{self.__name}"
+
+    def __repr__(self) -> str:
+        """Дандер для вывода информации об экземпляре"""
+        return f"Item{self.__name, self.price, self.quantity}"

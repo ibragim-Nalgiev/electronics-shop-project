@@ -38,3 +38,9 @@ def test_instantiate_from_csv():
         Item.instantiate_from_csv('../src/items.csv')
     except FileNotFoundError:
         print("Отсутствует файл item.csv")
+
+def test__repr__(item1):
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+def test__str__(item1):
+    assert str(item1) == 'Смартфон'
