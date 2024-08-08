@@ -1,11 +1,16 @@
+from src.item import Item
 from src.phone import Phone
 import pytest
-
 
 
 @pytest.fixture
 def phone1():
     return Phone("iPhone 14", 120_000, 5, 2)
+
+
+@pytest.fixture()
+def item1():
+    return Item("Смартфон", 10000, 20)
 
 
 def test_init(phone1):
@@ -27,3 +32,8 @@ def test_number_of_sim(phone1):
 def test_number_of_sim_ok(phone1):
     phone1.number_of_sim = 1
     assert phone1.number_of_sim == 1
+
+
+def test__add__(phone1, item1):
+    assert phone1 + item1 == 25
+

@@ -1,13 +1,23 @@
-def test_keyboard_str(keyboard):
-    assert str(keyboard) == "Razor Deep 100"
+import pytest
+
+from src.keyboard import KeyBoard
 
 
-def test_keyboard_lang(keyboard):
-    assert keyboard.language == 'EN'
+@pytest.fixture()
+def keyboard1():
+    return KeyBoard('Dark Project KD87A', 9600, 5)
 
 
-def test_change_lang(keyboard):
-    keyboard.change_lang()
-    assert keyboard.language == 'RU'
-    keyboard.change_lang()
-    assert keyboard.language == 'EN'
+def test__str__(keyboard1):
+    assert str(keyboard1.language) == "EN"
+
+
+def test_language_setter(keyboard1):
+    with pytest.raises(AttributeError):
+        keyboard1.language = "CN"
+
+
+def test_change_lang(keyboard1):
+    keyboard1.language = "RU"
+    assert keyboard1.language == "RU"
+
